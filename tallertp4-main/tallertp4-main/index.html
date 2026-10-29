@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voces que Engañan</title>
+  <meta name="description" content="Voces que Engañan: descubrí qué puede pasar con una simple voz.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <audio id="audio-timbre" src="Sonido-timbre-Telefono-SnapYT.App.mp3" preload="auto" loop></audio>
+
+  <div id="intro" class="intro" title="Hacé clic para atender">
+    <img src="musica1.png" alt="Onda de sonido: el teléfono está sonando" class="onda">
+  </div>
+
+  <main id="portada" class="pantalla portada" aria-hidden="true">
+    <div class="canvas">
+      <h1 class="titulo">
+        <span class="titulo-voces">voces que</span>
+        <span class="titulo-enganan">engañan</span>
+      </h1>
+
+      <div class="bocadillo">
+        <p>¿Querés descubrir<br>qué puede pasar<br>con una simple<br>voz?</p>
+        <svg class="bocadillo-cola" viewBox="0 0 40 30" aria-hidden="true">
+          <path d="M40 2 C28 10 14 20 0 28 C14 24 30 20 40 14" />
+        </svg>
+      </div>
+
+      <img src="assets/tipitooriginal.png" alt="Personaje detective" class="tipito">
+
+      <button id="btn-rojo" class="btn-avanzar-portada" aria-label="Avanzar">
+        <span class="circulo-asterisco">*</span>
+        <span class="texto-avanzar">Avanzar</span>
+      </button>
+    </div>
+  </main>
+
+  <section id="instrucciones" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-instrucciones">
+      <img src="telefonosolo1.png" alt="Teléfono rojo de escritorio" class="fondo-telefono-instrucciones">
+
+      <h2 class="instr-titulo">¿Cómo usar este teléfono?</h2>
+      <p class="instr-texto">
+        Para recorrer esta experiencia, solo deberas escuchar desde el<br>
+        telefono y marcar los número del mismo cuando se les<br>
+        indique.
+      </p>
+
+      <button id="btn-rojo-2" class="btn-avanzar-portada btn-instrucciones-avanzar" aria-label="Avanzar">
+        <span class="circulo-asterisco">*</span>
+        <span class="texto-avanzar">Avanzar</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="menu" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-menu-interactivo" id="canvas-menu">
+      <img src="tresmensajes.png" alt="Fondo de la oficina con tres mensajes" class="fondo-menu-oficina">
+
+      <h2 class="menu-titulo">Tres mensajes</h2>
+      <p class="menu-sub">marque los números que se muestran en el teléfono para ir al mensaje.</p>
+
+      <button class="opcion-tarjeta opcion-1" data-opcion="1" aria-label="Mensaje 1">
+        <span class="opcion-num">1</span>
+        <span class="opcion-texto">De una grabación a un dato</span>
+      </button>
+
+      <button class="opcion-tarjeta opcion-2" data-opcion="2" aria-label="Mensaje 2">
+        <span class="opcion-num">2</span>
+        <span class="opcion-texto">Estafas de voz</span>
+      </button>
+
+      <button class="opcion-tarjeta opcion-3" data-opcion="3" aria-label="Mensaje 3">
+        <span class="opcion-num">3</span>
+        <span class="opcion-texto">Tu identidad en manos de la IA</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- PANTALLA NÚCLEO 1 (Opción 1 del menú) -->
+  <section id="nucleo-1" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-nucleo-principal">
+      <img src="fondoprincipal.jpeg" alt="Fondo de la mesa de trabajo" class="fondo-nucleo-principal">
+
+      <!-- Textos superiores -->
+      <h2 class="nucleo-titulo-1">De una grabación a un dato</h2>
+      <p class="nucleo-sub-1">¿Qué hago si me piden mis datos personales por teléfono?</p>
+
+      <!-- Opción 4: Libreta ("Modalidades de engaño") -->
+      <button class="tarjeta-opcion item-libreta-1" data-opcion="4" aria-label="Modalidades de engaño">
+        <span class="circulo-num">4</span>
+        <span class="texto-tarjeta">Modalidades de engaño</span>
+      </button>
+
+      <!-- Opción 5: Teléfono rojo ("Estafa telefonica") -->
+      <button class="tarjeta-opcion item-telefono-1" data-opcion="5" aria-label="Estafa telefonica">
+        <span class="circulo-num">5</span>
+        <span class="texto-tarjeta">Estafa telefonica</span>
+      </button>
+
+      <!-- Opción 6: Papeles ("Denuncias") -->
+      <button class="tarjeta-opcion item-denuncias-1" data-opcion="6" aria-label="Denuncias">
+        <span class="circulo-num">6</span>
+        <span class="texto-tarjeta">Denuncias</span>
+      </button>
+
+      <!-- Personaje tipito7 abajo a la izquierda -->
+      <img src="tipito7.png" alt="Personaje detective" class="tipito-nucleo-1">
+
+      <!-- Texto inferior orientativo -->
+      <p class="instr-inferior-1">Marca los números que se ven en en la pantalla en el teléfono.</p>
+
+      <!-- Botón Volver con numeral (#) abajo a la derecha -->
+      <div class="volver-wrap-1">
+        <button id="btn-volver-menu" class="btn-hash-1" aria-label="Volver al menú">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+<!-- PANTALLA MODAL / OPCIÓN 4: MODALIDAD DE ENGAÑO -->
+  <!-- PANTALLA OPCIÓN 4: MODALIDAD DE ENGAÑO (CON TRANSICIÓN A LOS 5 SEGUNDOS) -->
+  <section id="modal-detalle-libreta" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-modalidad">
+      <img src="modalidaddeengaño.jpeg" alt="Fondo modalidades de engaño" class="fondo-modalidad">
+
+      <!-- ================= ESTADO 1 (Primeros 5 segundos) ================= -->
+      <div class="contenido-estado estado-1">
+        <div class="texto-modalidad-wrap">
+          <p class="modalidad-parrafo">
+            Las <strong class="texto-oro">Modalidades de engaño</strong> más comunes son: <strong class="texto-oro">Se hacen pasar</strong> por empleados de un call center.
+          </p>
+          <p class="modalidad-parrafo">
+            <strong class="texto-oro">Te engañan</strong> diciendo que un familiar está en peligro.
+          </p>
+          <p class="modalidad-parrafo">
+            <strong class="texto-oro">Te alertan falsamente</strong> sobre un supuesto riesgo en tu cuenta bancaria.
+          </p>
+        </div>
+
+        <div class="imagenes-modalidad-wrap">
+          <div class="img-mini-wrap">
+            <img src="llamada falsa2.png" alt="Llamada falsa 2" class="img-mini">
+          </div>
+          <div class="img-mini-wrap">
+            <img src="llamada.falsa.png" alt="Llamada falsa" class="img-mini">
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ESTADO 2 (A partir de los 5 segundos) ================= -->
+      <div class="contenido-estado estado-2">
+        <div class="panel-llamada-entrante">
+          <h3 class="llamada-titulo">LLAMADA ENTRANTE</h3>
+          <div class="llamada-linea-punteada"></div>
+          <p class="llamada-texto">
+            Marca <span class="badge-numero-txt">0</span> para atender la llamada
+          </p>
+          <p class="llamada-texto">
+            Marca <span class="badge-numero-txt">9</span> para ignorar la llamada
+          </p>
+          <div class="llamada-linea-punteada"></div>
+          <p class="llamada-sub">Seleccioná estos número en el telefono</p>
+        </div>
+
+        <div class="imagenes-modalidad-wrap">
+          <div class="img-mini-wrap">
+            <img src="datostuyos.png" alt="Datos tuyos" class="img-mini">
+          </div>
+          <div class="img-mini-wrap">
+            <img src="datosenredes.png" alt="Datos en redes" class="img-mini">
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Volver común para ambos estados -->
+      <div class="volver-wrap-modalidad">
+        <button id="btn-cerrar-libreta" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA OPCIÓN 5: ESTAFA TELEFÓNICA (VISHING) -->
+  <section id="modal-estafa-telefonica" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-estafa">
+      <img src="estafastel.jpeg" alt="Fondo estafa telefónica" class="fondo-estafastel">
+
+      <div class="texto-estafa-wrap">
+        <p class="estafa-parrafo">
+          El <strong class="texto-oro">vishing</strong> es una <strong class="texto-oro">estafa telefónica</strong> que utiliza falsas emergencias y <strong class="texto-oro">voces clonadas con IA</strong> para engañar a las víctimas y robar sus datos o dinero.
+        </p>
+      </div>
+
+      <!-- Imágenes de apoyo: ilustracion estafa.png y hecho con ia.png -->
+      <div class="imagenes-estafa-wrap">
+        <div class="img-mini-wrap">
+          <img src="ilustracion estafa.png" alt="Ilustración de estafa" class="img-mini">
+        </div>
+        <div class="img-mini-wrap">
+          <img src="hecho con ia.png" alt="Hecho con IA" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-estafa">
+        <button id="btn-cerrar-estafa" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA OPCIÓN 6: DENUNCIAS -->
+  <section id="modal-denuncias" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-denuncias">
+      <img src="denuncias.jpeg" alt="Fondo denuncias" class="fondo-denuncias">
+
+      <div class="texto-denuncias-wrap">
+        <p class="denuncias-parrafo">
+          En 2023, CABA registró más de <strong class="texto-oro">1.600 denuncias</strong> por <strong class="texto-oro">delitos contra la identidad digital</strong>.<br>
+          443 fueron por <strong class="texto-oro">suplantación de identidad mediante perfiles falsos</strong>.
+        </p>
+      </div>
+
+      <!-- Contenedor de imágenes inferiores: espacio reservado (1) y identidad digital.png (2) -->
+      <div class="imagenes-denuncias-wrap">
+        <!-- Espacio reservado para la primera imagen que todavía no tenés -->
+        <div class="img-mini-wrap espacio-reservado" title="Espacio para la primera imagen">
+          <span class="placeholder-txt">Próximamente</span>
+        </div>
+        
+        <!-- Segunda imagen: identidad digital.png -->
+        <div class="img-mini-wrap">
+          <img src="identidad digital.png" alt="Identidad digital" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-denuncias">
+        <button id="btn-cerrar-denuncias" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 2 (Opción 2 del menú: Estafas de voz) -->
+  <section id="nucleo-2" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-nucleo-2">
+      <img src="estafasdevoz.png" alt="Fondo Estafas de voz" class="fondo-nucleo-2">
+
+      <!-- Textos superiores -->
+      <h2 class="nucleo-titulo-2">Estafas de voz</h2>
+      <p class="nucleo-sub-2">¿Qué hago si me piden mis datos personales por teléfono?</p>
+
+      <!-- Opción 4: Clonación -->
+      <button class="tarjeta-opcion item-clonacion-2" data-opcion="4" aria-label="Clonación">
+        <span class="circulo-num">4</span>
+        <span class="texto-tarjeta">Clonación</span>
+      </button>
+
+      <!-- Opción 5: Investigación -->
+      <button class="tarjeta-opcion item-investigacion-2" data-opcion="5" aria-label="Investigación">
+        <span class="circulo-num">5</span>
+        <span class="texto-tarjeta">Investigación</span>
+      </button>
+
+      <!-- Opción 6: Info del delito -->
+      <button class="tarjeta-opcion item-info-2" data-opcion="6" aria-label="Info del delito">
+        <span class="circulo-num">6</span>
+        <span class="texto-tarjeta">Info del delito</span>
+      </button>
+
+      <!-- Personaje leyendo el diario (image.png) abajo a la izquierda -->
+      <img src="image.png" alt="Personaje leyendo el diario" class="tipito-nucleo-2">
+
+      <!-- Texto inferior orientativo -->
+      <p class="instr-inferior-2">Marca los números que se ven en en la pantalla en el teléfono.</p>
+
+      <!-- Botón Volver con numeral (#) abajo a la derecha -->
+      <div class="volver-wrap-2">
+        <button id="btn-volver-menu-2" class="btn-hash-2" aria-label="Volver al menú">
+          <span class="hash-simbolo-2">#</span>
+        </button>
+        <span class="volver-texto-2">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 2 - OPCIÓN 4: CLONACIÓN -->
+  <section id="modal-clonacion" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-clonacion">
+      <img src="clonacion.png" alt="Fondo clonación" class="fondo-clonacion">
+
+      <div class="texto-clonacion-wrap">
+        <p class="clonacion-parrafo">
+          La <strong class="texto-oro">clonación de voz con IA</strong> permite imitar la voz de una persona y generar <strong class="texto-oro">audios falsos muy realistas</strong>. Para realizar estas estafas, los delincuentes obtienen nombres y teléfonos de redes sociales, bases de datos y formularios.
+        </p>
+      </div>
+
+      <!-- Imagen de apoyo: clonacion de voz.png -->
+      <div class="imagenes-clonacion-wrap">
+        <div class="img-mini-wrap">
+          <img src="clonacion de voz.png" alt="Clonación de voz" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-clonacion">
+        <button id="btn-cerrar-clonacion" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 2 - OPCIÓN 5: INVESTIGACIÓN -->
+  <section id="modal-investigacion" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-investigacion">
+      <img src="investigacion.jpeg" alt="Fondo investigación" class="fondo-investigacion">
+
+      <div class="texto-investigacion-wrap">
+        <p class="investigacion-parrafo">
+          Una <strong class="texto-oro">investigación</strong> de la Fiscalía N.º 1 de Quilmes permitió desarticular una <strong class="texto-oro">estafa millonaria a través de WhatsApp</strong>, en la que se utilizaron <strong class="texto-oro">audios generados</strong> con inteligencia artificial, capaces de imitar con precisión la voz original para engañar a las víctimas.
+        </p>
+      </div>
+
+      <!-- Imagen de apoyo: whatsApp.png -->
+      <div class="imagenes-investigacion-wrap">
+        <div class="img-mini-wrap">
+          <img src="whatsApp.png" alt="Estafa a través de WhatsApp" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-investigacion">
+        <button id="btn-cerrar-investigacion" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 2 - OPCIÓN 6: INFO DEL DELITO (CON TRANSICIÓN A LOS 5 SEGUNDOS) -->
+  <section id="modal-infodedelito" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-infodedelito">
+      <img src="infodedelito.jpeg" alt="Fondo info del delito" class="fondo-infodedelito">
+
+      <!-- ================= ESTADO 1 (Primeros 5 segundos) ================= -->
+      <div class="contenido-estado estado-1">
+        <div class="texto-infodedelito-wrap">
+          <p class="infodedelito-parrafo">
+            Una persona te llama por teléfono e intenta tener tus <strong class="texto-oro">datos personales, financieros</strong> o los <strong class="texto-oro">nombres</strong> de tus familiares, mediante engaños.
+          </p>
+          <p class="infodedelito-parrafo" style="margin-top: 1.5cqh;">
+            Los estafadores <strong class="texto-oro">utilizan</strong> técnicas para <strong class="texto-oro">manipularte</strong> y conseguir que compartas información <strong class="texto-oro">sin darte cuenta</strong>.
+          </p>
+        </div>
+
+        <div class="imagenes-infodedelito-wrap">
+          <div class="img-mini-wrap">
+            <img src="dialogo.png" alt="Diálogo de ejemplo" class="img-mini">
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ESTADO 2 (A partir de los 5 segundos) ================= -->
+      <div class="contenido-estado estado-2">
+        <div class="panel-llamada-entrante">
+          <h3 class="llamada-titulo">LLAMADA ENTRANTE</h3>
+          <div class="llamada-linea-punteada"></div>
+          <p class="llamada-texto">
+            Marca <span class="badge-numero-txt">0</span> para atender la llamada
+          </p>
+          <p class="llamada-texto">
+            Marca <span class="badge-numero-txt">9</span> para ignorar la llamada
+          </p>
+          <div class="llamada-linea-punteada"></div>
+          <p class="llamada-sub">Seleccioná estos número en el telefono</p>
+        </div>
+
+        <div class="texto-infodedelito-wrap-2">
+          <p class="infodedelito-parrafo">
+            Suelen inventar <strong class="texto-oro">urgencias</strong>, como que un familiar está en <strong class="texto-oro">peligro o una necesidad inmediata</strong>, haciendo que actúes a través de intermediarios para presionarte y lograr que <strong class="texto-oro">actúes sin pensar</strong>.
+          </p>
+        </div>
+
+        <div class="imagenes-infodedelito-wrap">
+          <div class="img-mini-wrap">
+            <img src="estafasllamado.png" alt="Estafas por llamado" class="img-mini">
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-infodedelito">
+        <button id="btn-cerrar-infodedelito" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 3 (Opción 3 del menú: Tu identidad en manos de la IA) -->
+  <section id="nucleo-3" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-nucleo-3">
+      <img src="tuidentidad.png" alt="Fondo Tu identidad en manos de la IA" class="fondo-nucleo-3">
+
+      <!-- Textos superiores -->
+      <h2 class="nucleo-titulo-3">Tu identidad en manos de la IA</h2>
+      <p class="nucleo-sub-3">¿podemos decidir cómo y para qué se utiliza?</p>
+
+      <!-- Opción 4: Ley de protección -->
+      <button class="tarjeta-opcion item-ley-3" data-opcion="4" aria-label="Ley de protección">
+        <span class="circulo-num">4</span>
+        <span class="texto-tarjeta">Ley de protección</span>
+      </button>
+
+      <!-- Opción 5: Robo de identidad -->
+      <button class="tarjeta-opcion item-robo-3" data-opcion="5" aria-label="Robo de identidad">
+        <span class="circulo-num">5</span>
+        <span class="texto-tarjeta">Robo de identidad</span>
+      </button>
+
+      <!-- Opción 6: Identidad Digital -->
+      <button class="tarjeta-opcion item-identidad-3" data-opcion="6" aria-label="Identidad Digital">
+        <span class="circulo-num">6</span>
+        <span class="texto-tarjeta">Identidad Digital</span>
+      </button>
+
+      <!-- Personaje tipito5.png arriba a la derecha -->
+      <img src="tipito5.png" alt="Personaje detective" class="tipito-nucleo-3">
+
+      <!-- Texto inferior orientativo -->
+      <p class="instr-inferior-3">Marca los números que se ven en en la pantalla en el teléfono.</p>
+
+      <!-- Botón Volver con numeral (#) abajo a la derecha -->
+      <div class="volver-wrap-3">
+        <button id="btn-volver-menu-3" class="btn-hash-3" aria-label="Volver al menú">
+          <span class="hash-simbolo-3">#</span>
+        </button>
+        <span class="volver-texto-3">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 3 - OPCIÓN 4: LEY DE PROTECCIÓN -->
+  <section id="modal-ley" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-ley">
+      <img src="ley.png" alt="Fondo Ley de protección" class="fondo-ley">
+
+      <div class="texto-ley-wrap">
+        <p class="ley-parrafo">
+          La <strong class="texto-oro">Ley 25.326</strong> de Protección de Datos Personales <strong class="texto-oro">protege la información que permite identificarte</strong> frente a usos no autorizados. Esto incluye tu imagen y los datos biométricos, como los rasgos de tu voz, que pueden utilizarse para identificarte.
+        </p>
+      </div>
+
+      <!-- Imagen de apoyo: iconos de ia.png -->
+      <div class="imagenes-ley-wrap">
+        <div class="img-mini-wrap img-ley-wrap">
+          <img src="iconos de ia.png" alt="Iconos de IA y biométricos" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-ley">
+        <button id="btn-cerrar-ley" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 3 - OPCIÓN 5: ROBO DE IDENTIDAD -->
+  <section id="modal-robo" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-robo">
+      <img src="robodeidentidad.png" alt="Fondo Robo de identidad" class="fondo-robo">
+
+      <div class="texto-robo-wrap">
+        <p class="robo-parrafo">
+          El periodista <strong class="texto-oro">Alejandro Fantino denunció en 2025 un video creado con IA que imitaba su imagen y voz</strong> para promocionar falsas inversiones en redes sociales. Tras advertir sobre la estafa, presentó una <strong class="texto-oro">denuncia legal</strong> en la Ciudad de Buenos Aires.
+        </p>
+      </div>
+
+      <!-- Imágenes de apoyo: fantino.png y fantino twiter.png -->
+      <div class="imagenes-robo-wrap">
+        <div class="img-mini-wrap">
+          <img src="fantino.png" alt="Alejandro Fantino" class="img-mini">
+        </div>
+        <div class="img-mini-wrap">
+          <img src="fantino twiter.png" alt="Tweet de Alejandro Fantino" class="img-mini">
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-robo">
+        <button id="btn-cerrar-robo" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <!-- PANTALLA NÚCLEO 3 - OPCIÓN 6: IDENTIDAD DIGITAL (CON TRANSICIÓN A LOS 5 SEGUNDOS) -->
+  <section id="modal-redes" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-redes">
+      <img src="redes.png" alt="Fondo identidad digital redes" class="fondo-redes">
+
+      <!-- ================= ESTADO 1 (Primeros 5 segundos) ================= -->
+      <div class="contenido-estado estado-1">
+        <div class="texto-redes-wrap">
+          <p class="redes-parrafo">
+            La <strong class="texto-oro">identidad digital</strong> se construye a partir de información que compartimos en internet como datos que aparecen en nuestras redes, por ejemplo:
+          </p>
+          <ul class="redes-lista">
+            <li><strong class="texto-oro">Perfiles:</strong> información en redes sociales y profesionales.</li>
+            <li><strong class="texto-oro">Contactos:</strong> amigos, seguidores y correos electrónicos.</li>
+          </ul>
+        </div>
+
+        <div class="imagenes-redes-wrap">
+          <div class="img-mini-wrap">
+            <!-- Imagen de perfil de red social (Estado 1) -->
+            <img src="perfil.png" alt="Perfil de red social" class="img-mini" style="object-position: bottom;">
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= ESTADO 2 (A partir de los 5 segundos) ================= -->
+      <div class="contenido-estado estado-2">
+        <div class="texto-redes-wrap">
+          <p class="redes-parrafo">
+            Y <strong class="texto-oro">contenidos digitales</strong> como, por ejemplo:
+          </p>
+          <ul class="redes-lista">
+            <li><strong class="texto-oro">Producciones:</strong> fotos, videos y publicaciones.</li>
+            <li><strong class="texto-oro">Interacciones:</strong> comentarios, opiniones y valoraciones.</li>
+            <li><strong class="texto-oro">Mensajería:</strong> conversaciones en WhatsApp, Telegram y otras aplicaciones.</li>
+          </ul>
+        </div>
+
+        <div class="imagenes-redes-wrap">
+          <div class="img-mini-wrap">
+            <img src="twitter.png" alt="Publicación de Twitter" class="img-mini">
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-redes">
+        <button id="btn-cerrar-redes" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <audio id="audio-llamada1" src="llamada1.mpeg" preload="auto"></audio>
+  <!-- PANTALLA DE LLAMADA EN CURSO: OPCIÓN 4 (AL PRESIONAR EL 0) -->
+  <section id="modal-llamada-activa-4" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-llamada-activa">
+      <img src="telefonosolo2.png" alt="Teléfono en llamada" class="fondo-llamada-activa">
+
+      <!-- Onda de sonido simulada arriba -->
+      <div class="onda-audio-wrap">
+        <img src="musica1.png" alt="Onda de sonido" class="onda-audio-img">
+      </div>
+
+      <!-- Subtítulos del estafador abajo -->
+      <div class="subtitulos-llamada-wrap">
+        <p class="subtitulos-llamada-texto">
+          <strong class="texto-estafador-lbl">ESTAFADOR:</strong> Buenas tardes, le llamamos del área de seguridad de su banco porque detectamos un movimiento sospechoso en su cuenta. ¿Me podría confirmar su nombre, por favor?
+        </p>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-llamada-activa">
+        <button id="btn-cerrar-llamada-activa" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <audio id="audio-llamada2" src="llamada2.mpeg" preload="auto"></audio>
+  <!-- PANTALLA DE LLAMADA EN CURSO: NÚCLEO 2 - OPCIÓN 6 (AL PRESIONAR EL 0) -->
+  <section id="modal-llamada-activa-info" class="pantalla" aria-hidden="true">
+    <div class="canvas canvas-modal-llamada-activa">
+      <img src="telefonosolo2.png" alt="Teléfono en llamada" class="fondo-llamada-activa">
+
+      <!-- Onda de sonido simulada arriba -->
+      <div class="onda-audio-wrap">
+        <img src="musica1.png" alt="Onda de sonido" class="onda-audio-img">
+      </div>
+
+      <!-- Subtítulos del estafador abajo -->
+      <div class="subtitulos-llamada-wrap">
+        <p class="subtitulos-llamada-texto">
+          <strong class="texto-estafador-lbl">ESTAFADOR:</strong> Hola, ¿hablo con un familiar de [nombre]? Te llamamos porque tuvo un problema grave y necesitamos confirmar sus datos para poder asistirlo.
+        </p>
+      </div>
+
+      <!-- Botón Volver con numeral (#) -->
+      <div class="volver-wrap-llamada-activa">
+        <button id="btn-cerrar-llamada-activa-info" class="btn-hash-1" aria-label="Volver">
+          <span class="hash-simbolo-1">#</span>
+        </button>
+        <span class="volver-texto-1">Volver</span>
+      </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>

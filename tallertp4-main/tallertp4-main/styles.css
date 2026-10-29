@@ -1,0 +1,1800 @@
+:root {
+  --beige: #e4d3ae;
+  --crema: #ecdcb8;
+  --bocadillo: #f7c983;
+  --bordo: #6e1e2a;
+  --rojo-btn: #8a1f2d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--beige);
+  cursor: pointer;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.intro.oculta {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.onda {
+  width: 42vmin;
+  height: auto;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  animation: aparecer 1s ease forwards, sonar 1.6s ease-in-out 1s infinite;
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes sonar {
+  0%, 40%, 100% { opacity: 1; transform: scaleY(1); }
+  5% { transform: scaleY(1.25); }
+  10% { transform: scaleY(0.8); }
+  15% { transform: scaleY(1.2); }
+  20% { transform: scaleY(0.85); }
+  25% { transform: scaleY(1.15); }
+  30% { transform: scaleY(0.9); }
+  35% { transform: scaleY(1.05); }
+}
+
+.canvas {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  container-type: size;
+  overflow: hidden;
+  background: url('assets/fondo-escritorio.png') 95% center / cover no-repeat;
+}
+
+.pantalla {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+  z-index: 1;
+}
+
+.pantalla.visible {
+  opacity: 1;
+  visibility: visible;
+  z-index: 5;
+}
+
+.portada .canvas {
+  background: url('portada.png') center / cover no-repeat;
+}
+
+.titulo { font-weight: normal; }
+
+.titulo-voces {
+  position: absolute;
+  left: 14.5%;
+  top: 9%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  font-size: 7.5cqh;
+  color: #ebdcb8;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 0.4cqh 1.2cqh rgba(0, 0, 0, 0.85);
+}
+
+.titulo-enganan {
+  position: absolute;
+  left: 39.5%;
+  top: 15%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 8.5cqh;
+  color: #f7b13d;
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 0.4cqh 1.2cqh rgba(0, 0, 0, 0.85);
+}
+
+.bocadillo {
+  position: absolute !important;
+  left: 38% !important;
+  top: 40% !important;
+  width: 23%;
+  height: 26%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #928b68;
+  border: 0.35cqh solid #4a2121;
+  border-radius: 50%;
+  box-shadow: 0 1cqh 2cqh rgba(0, 0, 0, 0.4);
+}
+
+.bocadillo p {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.2cqh;
+  line-height: 1.35;
+  text-align: center;
+  color: #ebdcb8;
+}
+
+.bocadillo-cola {
+  position: absolute;
+  left: 85%;
+  bottom: 12%;
+  width: 20%;
+  height: auto;
+  overflow: visible;
+  transform: rotate(-25deg);
+}
+
+.bocadillo-cola path {
+  fill: #928b68;
+  stroke: #4a2121;
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.portada .tipito {
+  position: absolute;
+  left: 64%;
+  top: 25%;
+  width: 22cqw;
+  height: auto;
+  filter: drop-shadow(0 1.5cqh 2cqh rgba(0, 0, 0, 0.7));
+}
+
+.btn-avanzar-portada {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6cqh;
+  padding: 0;
+  outline: none;
+  transition: transform 0.2s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.btn-avanzar-portada:hover { transform: scale(1.05); }
+
+.circulo-asterisco {
+  width: 7.5cqw;
+  height: 7.5cqw;
+  max-width: 80px;
+  max-height: 80px;
+  border-radius: 50%;
+  background-color: #16100c;
+  border: 0.35cqh solid #ebdcb8;
+  color: #ebdcb8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Michroma', sans-serif;
+  font-size: 5cqh;
+  font-weight: bold;
+  line-height: 1;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+}
+
+.texto-avanzar {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.4cqh;
+  color: #ebdcb8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0.2cqh 0.8cqh rgba(0, 0, 0, 0.8);
+}
+
+.canvas-instrucciones {
+  background: #120b08;
+  position: relative;
+  overflow: hidden;
+}
+
+.fondo-telefono-instrucciones {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) contrast(1.05);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.instr-titulo {
+  position: absolute;
+  left: 5.5%;
+  top: 7.5%;
+  font-family: 'Michroma', sans-serif;
+  font-weight: normal;
+  font-size: 5cqh;
+  color: #f7b13d;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  text-shadow: 0 0.4cqh 1.2cqh rgba(0, 0, 0, 0.85);
+  z-index: 3;
+}
+
+.instr-texto {
+  position: absolute;
+  left: 5.5%;
+  top: 17.5%;
+  width: 85%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  font-size: 3.4cqh;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.85);
+  z-index: 3;
+}
+
+.btn-instrucciones-avanzar {
+  position: absolute !important;
+  right: 3.5cqw !important;
+  bottom: 3.5cqh !important;
+  z-index: 99999 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+/* =========================================================
+   ESTILOS DE LA PANTALLA MENÚ (IDÉNTICO A LA REFERENCIA)
+   ========================================================= */
+
+.canvas-menu-interactivo {
+  background: #120b08;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+}
+
+.fondo-menu-oficina {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.menu-titulo {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  font-family: 'Michroma', sans-serif;
+  font-weight: normal;
+  font-size: 5cqh;
+  color: #f7b13d;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-shadow: 0 0.4cqh 1.2cqh rgba(0, 0, 0, 0.9);
+  z-index: 4;
+  text-align: center;
+}
+
+.menu-sub {
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  transform: translateX(-50%);
+  width: 90%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 500;
+  font-size: 3.2cqh;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 4;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Tarjetas de opciones posicionadas exactamente como en la referencia */
+.opcion-tarjeta {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  background: rgba(162, 153, 118, 0.92);
+  border: 0.25cqh solid #4a2121;
+  border-radius: 999px;
+  padding: 0.6cqh 1.6cqw 0.6cqh 0.6cqh;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.7);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.opcion-tarjeta:hover {
+  transform: scale(1.05);
+  background: rgba(188, 178, 138, 0.98);
+}
+
+/* Posiciones exactas para cada botón según la imagen de referencia */
+.opcion-1 { left: 20%; top: 66%; }
+.opcion-2 { left: 56%; top: 59%; }
+.opcion-3 { left: 66%; top: 32%; }
+
+.opcion-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4cqh;
+  height: 4cqh;
+  background-color: #1a120c;
+  border-radius: 50%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.1cqh;
+  color: #ebdcb8;
+  font-weight: bold;
+}
+
+.opcion-texto {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.7cqh;
+  color: #1a120c;
+  white-space: nowrap;
+}
+/* =========================================================
+   ESTILOS PARA EL NÚCLEO 1 (OPCIÓN 1)
+   ========================================================= */
+
+.canvas-nucleo-principal {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-nucleo-principal {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.nucleo-titulo-1 {
+  position: absolute;
+  left: 4.5%;
+  top: 5%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  color: #f7b13d;
+  font-weight: normal;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+.nucleo-sub-1 {
+  position: absolute;
+  left: 4.5%;
+  top: 12.5%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  color: #ebdcb8;
+  font-weight: 500;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+/* Posiciones exactas de las tarjetas en la mesa de trabajo */
+.item-libreta-1 { left: 24%; top: 50%; }
+.item-telefono-1 { left: 52%; top: 36%; }
+.item-denuncias-1 { left: 71%; top: 24%; }
+
+.circulo-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.8cqh;
+  height: 3.8cqh;
+  background-color: #1a120c;
+  border-radius: 50%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  font-weight: bold;
+}
+
+.texto-tarjeta {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.7cqh;
+  color: #1a120c;
+  white-space: nowrap;
+}
+
+.tipito-nucleo-1 {
+  position: absolute;
+  left: -1.5cqw;
+  bottom: -3.5cqh;
+  width: 18cqw;
+  max-width: 230px;
+  height: auto;
+  filter: drop-shadow(0 1.2cqh 2cqh rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.instr-inferior-1 {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8cqh;
+  color: #ebdcb8;
+  text-align: center;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.volver-wrap-1 {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+
+.btn-hash-1 {
+  width: 7cqw;
+  height: 7cqw;
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 50%;
+  background-color: #1a120c;
+  border: 0.35cqh solid #ebdcb8;
+  color: #ebdcb8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.btn-hash-1:hover {
+  background-color: var(--rojo-btn);
+  transform: scale(1.06);
+}
+
+.hash-simbolo-1 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.volver-texto-1 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0.2cqh 0.6cqh rgba(0, 0, 0, 0.8);
+}
+/* =========================================================
+   ESTILOS PARA EL NÚCLEO 1 (OPCIÓN 1)
+   ========================================================= */
+
+.canvas-nucleo-principal {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-nucleo-principal {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.nucleo-titulo-1 {
+  position: absolute;
+  left: 4.5%;
+  top: 5%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  color: #f7b13d;
+  font-weight: normal;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+.nucleo-sub-1 {
+  position: absolute;
+  left: 4.5%;
+  top: 12.5%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  color: #ebdcb8;
+  font-weight: 500;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+/* Tarjetas de opciones (4, 5 y 6) */
+.tarjeta-opcion {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1.2cqw;
+  background: rgba(180, 170, 135, 0.92);
+  border: 0.25cqh solid #4a2121;
+  border-radius: 999px;
+  padding: 0.5cqh 1.5cqw 0.5cqh 0.5cqh;
+  cursor: pointer;
+  z-index: 4;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.tarjeta-opcion:hover {
+  transform: scale(1.05);
+  background: rgba(200, 190, 150, 0.98);
+}
+
+/* Posiciones exactas basadas en la referencia visual */
+.item-libreta-1 { left: 24%; top: 50%; }
+.item-telefono-1 { left: 52%; top: 36%; }
+.item-denuncias-1 { left: 71%; top: 24%; }
+
+.circulo-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.8cqh;
+  height: 3.8cqh;
+  background-color: #1a120c;
+  border-radius: 50%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  font-weight: bold;
+}
+
+.texto-tarjeta {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.7cqh;
+  color: #1a120c;
+  white-space: nowrap;
+}
+
+.tipito-nucleo-1 {
+  position: absolute;
+  left: -1.5cqw;
+  bottom: -3.5cqh;
+  width: 18cqw;
+  max-width: 230px;
+  height: auto;
+  filter: drop-shadow(0 1.2cqh 2cqh rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.instr-inferior-1 {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8cqh;
+  color: #ebdcb8;
+  text-align: center;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.volver-wrap-1 {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+
+.btn-hash-1 {
+  width: 7cqw;
+  height: 7cqw;
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 50%;
+  background-color: #1a120c;
+  border: 0.35cqh solid #ebdcb8;
+  color: #ebdcb8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.btn-hash-1:hover {
+  background-color: var(--rojo-btn);
+  transform: scale(1.06);
+}
+
+.hash-simbolo-1 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.volver-texto-1 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0.2cqh 0.6cqh rgba(0, 0, 0, 0.8);
+}
+/* =========================================================
+   ESTILOS DE TRANSICIÓN DE ESTADOS (OPCIÓN 4)
+   ========================================================= */
+
+.canvas-modal-modalidad {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-modalidad {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Manejo de visibilidad por capas y opacidad */
+.contenido-estado {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease;
+}
+
+#modal-detalle-libreta .estado-1 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+#modal-detalle-libreta .estado-2 {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#modal-detalle-libreta.cambiado .estado-1 {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#modal-detalle-libreta.cambiado .estado-2 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+/* Panel de llamada entrante (Estado 2) */
+.panel-llamada-entrante {
+  position: absolute;
+  left: 50%;
+  top: 6%;
+  transform: translateX(-50%);
+  width: 68%;
+  background: rgba(162, 153, 118, 0.95);
+  border: 0.25cqh solid #f2b33d;
+  border-radius: 2.5cqh;
+  box-shadow: 0 1.5cqh 4cqh rgba(0, 0, 0, 0.8);
+  padding: 2.2cqh 3cqw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2cqh;
+  z-index: 3;
+}
+
+.llamada-titulo {
+  font-family: 'Michroma', sans-serif;
+  font-size: 3.2cqh;
+  color: #1a120c;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.llamada-linea-punteada {
+  width: 100%;
+  border-top: 0.25cqh dashed #8a6f3d;
+  margin: 0.4cqh 0;
+}
+
+.llamada-texto {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.3cqh;
+  color: #1a120c;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 1cqw;
+}
+
+.badge-numero-txt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.2cqh;
+  height: 4.2cqh;
+  background-color: #1a120c;
+  color: #ebdcb8;
+  border-radius: 50%;
+  font-size: 2.2cqh;
+  font-weight: bold;
+}
+
+.llamada-sub {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2cqh;
+  color: #2b1f17;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Contenedores generales de texto e imágenes compartidos */
+.texto-modalidad-wrap {
+  position: absolute;
+  left: 33%;
+  top: 7%;
+  width: 62%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8cqh;
+  z-index: 3;
+}
+
+.modalidad-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.texto-oro {
+  color: #f2b33d;
+  font-weight: 600;
+  text-shadow: 0 0 1.2cqh rgba(242, 179, 61, 0.45);
+}
+
+.imagenes-modalidad-wrap {
+  position: absolute;
+  right: 4%;
+  bottom: 15%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.img-mini-wrap {
+  width: 25cqw;
+  height: 24cqh;
+  border-radius: 2.5cqh;
+  overflow: hidden;
+  border: 0.2cqh solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 1.2cqh 3cqh rgba(0, 0, 0, 0.8);
+  background: #000;
+}
+
+.img-mini {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.volver-wrap-modalidad {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE ESTAFA TELEFÓNICA (OPCIÓN 5)
+   ========================================================= */
+
+.canvas-modal-estafa {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-estafastel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-estafa-wrap {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.estafa-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.4cqh;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-estafa-wrap {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-estafa {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE DENUNCIAS (OPCIÓN 6)
+   ========================================================= */
+
+.canvas-modal-denuncias {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-denuncias {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-denuncias-wrap {
+  position: absolute;
+  left: 6%;
+  top: 6%;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.denuncias-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.1cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-denuncias-wrap {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+/* Estilo para el espacio reservado donde irá la primera imagen */
+.espacio-reservado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 25, 20, 0.65);
+  border: 0.2cqh dashed rgba(242, 179, 61, 0.4);
+}
+
+.placeholder-txt {
+  font-family: 'Michroma', sans-serif;
+  font-size: 1.6cqh;
+  color: #ebdcb8;
+  opacity: 0.6;
+}
+
+.volver-wrap-denuncias {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA EL NÚCLEO 2 (OPCIÓN 2: ESTAFAS DE VOZ)
+   ========================================================= */
+
+.canvas-nucleo-2 {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-nucleo-2 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.nucleo-titulo-2 {
+  position: absolute;
+  left: 4.5%;
+  top: 5%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  color: #f7b13d;
+  font-weight: normal;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+.nucleo-sub-2 {
+  position: absolute;
+  left: 4.5%;
+  top: 12.5%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  color: #ebdcb8;
+  font-weight: 500;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+/* Posiciones exactas de las tarjetas en el Núcleo 2 */
+.item-clonacion-2 { left: 15%; top: 37%; }
+.item-investigacion-2 { left: 41%; top: 60%; }
+.item-info-2 { left: 69%; top: 36%; }
+
+.tipito-nucleo-2 {
+  position: absolute;
+  left: -1.5cqw;
+  bottom: -3.5cqh;
+  width: 17cqw;
+  max-width: 220px;
+  height: auto;
+  filter: drop-shadow(0 1.2cqh 2cqh rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.instr-inferior-2 {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8cqh;
+  color: #ebdcb8;
+  text-align: center;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.volver-wrap-2 {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+
+.btn-hash-2 {
+  width: 7cqw;
+  height: 7cqw;
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 50%;
+  background-color: #1a120c;
+  border: 0.35cqh solid #ebdcb8;
+  color: #ebdcb8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.btn-hash-2:hover {
+  background-color: var(--rojo-btn);
+  transform: scale(1.06);
+}
+
+.hash-simbolo-2 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.volver-texto-2 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0.2cqh 0.6cqh rgba(0, 0, 0, 0.8);
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE CLONACIÓN (NÚCLEO 2 - OPCIÓN 4)
+   ========================================================= */
+
+.canvas-modal-clonacion {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-clonacion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-clonacion-wrap {
+  position: absolute;
+  left: 14%;
+  top: 7%;
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.clonacion-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-clonacion-wrap {
+  position: absolute;
+  right: 18%;
+  bottom: 12%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-clonacion {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE INVESTIGACIÓN (NÚCLEO 2 - OPCIÓN 5)
+   ========================================================= */
+
+.canvas-modal-investigacion {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-investigacion {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-investigacion-wrap {
+  position: absolute;
+  left: 14%;
+  top: 7%;
+  width: 72%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.investigacion-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-investigacion-wrap {
+  position: absolute;
+  left: 36%;
+  bottom: 12%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-investigacion {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE INFO DEL DELITO (NÚCLEO 2 - OPCIÓN 6)
+   ========================================================= */
+
+.canvas-modal-infodedelito {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-infodedelito {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-infodedelito-wrap {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  width: 58%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.texto-infodedelito-wrap-2 {
+  position: absolute;
+  left: 6%;
+  top: 24%;
+  width: 58%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.infodedelito-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.9cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-infodedelito-wrap {
+  position: absolute;
+  left: 32%;
+  bottom: 8%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-infodedelito {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS DE TRANSICIÓN DE ESTADOS PARA INFO DEL DELITO (OPCIÓN 6)
+   ========================================================= */
+
+#modal-infodedelito .contenido-estado {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease;
+}
+
+#modal-infodedelito .estado-1 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+#modal-infodedelito .estado-2 {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#modal-infodedelito.cambiado .estado-1 {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#modal-infodedelito.cambiado .estado-2 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+/* =========================================================
+   ESTILOS PARA EL NÚCLEO 3 (OPCIÓN 3: TU IDENTIDAD EN MANOS DE LA IA)
+   ========================================================= */
+
+.canvas-nucleo-3 {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-nucleo-3 {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.nucleo-titulo-3 {
+  position: absolute;
+  left: 4.5%;
+  top: 4%;
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.2cqh;
+  color: #f7b13d;
+  font-weight: normal;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+.nucleo-sub-3 {
+  position: absolute;
+  left: 4.5%;
+  top: 11.5%;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.2cqh;
+  color: #ebdcb8;
+  font-weight: 500;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+}
+
+/* Posiciones exactas de las tarjetas en el Núcleo 3 según referencia */
+.item-ley-3 { left: 17%; top: 38%; }
+.item-robo-3 { left: 58%; top: 62%; }
+.item-identidad-3 { left: 65%; top: 37%; }
+
+.tipito-nucleo-3 {
+  position: absolute;
+  right: 3%;
+  top: 1.5%;
+  width: 15cqw;
+  max-width: 190px;
+  height: auto;
+  filter: drop-shadow(0 1.2cqh 2cqh rgba(0, 0, 0, 0.7));
+  pointer-events: none;
+  z-index: 3;
+}
+
+.instr-inferior-3 {
+  position: absolute;
+  left: 50%;
+  bottom: 3%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8cqh;
+  color: #ebdcb8;
+  text-align: center;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  z-index: 3;
+  white-space: nowrap;
+}
+
+.volver-wrap-3 {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+
+.btn-hash-3 {
+  width: 7cqw;
+  height: 7cqw;
+  max-width: 75px;
+  max-height: 75px;
+  border-radius: 50%;
+  background-color: #1a120c;
+  border: 0.35cqh solid #ebdcb8;
+  color: #ebdcb8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 0.8cqh 2cqh rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  outline: none;
+}
+
+.btn-hash-3:hover {
+  background-color: var(--rojo-btn);
+  transform: scale(1.06);
+}
+
+.hash-simbolo-3 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 4.5cqh;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.volver-texto-3 {
+  font-family: 'Michroma', sans-serif;
+  font-size: 2cqh;
+  color: #ebdcb8;
+  letter-spacing: 0.05em;
+  text-shadow: 0 0.2cqh 0.6cqh rgba(0, 0, 0, 0.8);
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE LEY DE PROTECCIÓN (NÚCLEO 3 - OPCIÓN 4)
+   ========================================================= */
+
+.canvas-modal-ley {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-ley {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-ley-wrap {
+  position: absolute;
+  left: 32%;
+  top: 9%;
+  width: 62%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.ley-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.1cqh;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-ley-wrap {
+  position: absolute;
+  left: 30%;
+  bottom: 8%;
+  display: flex;
+  z-index: 3;
+}
+
+/* Ajuste para que la imagen de íconos abarque bien el espacio inferior */
+.img-ley-wrap {
+  width: 35cqw;
+  height: 25cqh;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.volver-wrap-ley {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE ROBO DE IDENTIDAD (NÚCLEO 3 - OPCIÓN 5)
+   ========================================================= */
+
+.canvas-modal-robo {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-robo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.texto-robo-wrap {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  width: 82%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.robo-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3.1cqh;
+  font-weight: 500;
+  line-height: 1.38;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.imagenes-robo-wrap {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-robo {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE REDES / IDENTIDAD DIGITAL (NÚCLEO 3 - OPCIÓN 6)
+   ========================================================= */
+
+.canvas-modal-redes {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-redes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Transición de estados (Igual que en las pantallas anteriores de 5 segundos) */
+#modal-redes .contenido-estado {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease;
+}
+
+#modal-redes .estado-1 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+#modal-redes .estado-2 {
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#modal-redes.cambiado .estado-1 {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+#modal-redes.cambiado .estado-2 {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.texto-redes-wrap {
+  position: absolute;
+  left: 6%;
+  top: 7%;
+  width: 54%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5cqh;
+  z-index: 3;
+}
+
+.redes-parrafo {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.redes-lista {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2cqh;
+}
+
+.redes-lista li {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.9cqh;
+  color: #ebdcb8;
+  text-shadow: 0 0.3cqh 1cqh rgba(0, 0, 0, 0.9);
+}
+
+.imagenes-redes-wrap {
+  position: absolute;
+  left: 46%;
+  bottom: 8%;
+  display: flex;
+  gap: 2.5cqw;
+  z-index: 3;
+}
+
+.volver-wrap-redes {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
+/* =========================================================
+   ESTILOS PARA LA PANTALLA DE LLAMADA ACTIVA (TELÉFONO 2)
+   ========================================================= */
+
+.canvas-modal-llamada-activa {
+  position: relative;
+  width: min(100vw, 177.78vh);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #0d0806;
+}
+
+.fondo-llamada-activa {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.onda-audio-wrap {
+  position: absolute;
+  left: 50%;
+  top: 18%;
+  transform: translateX(-50%);
+  width: 35%;
+  z-index: 3;
+  opacity: 0.9;
+}
+
+.onda-audio-img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 1cqh rgba(255, 255, 255, 0.4));
+}
+
+.subtitulos-llamada-wrap {
+  position: absolute;
+  left: 6%;
+  bottom: 8%;
+  width: 88%;
+  background: rgba(13, 8, 6, 0.85);
+  border-left: 0.4cqh solid #f2b33d;
+  padding: 1.5cqh 2cqw;
+  z-index: 3;
+  border-radius: 0.5cqh;
+}
+
+.subtitulos-llamada-texto {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.8cqh;
+  font-weight: 500;
+  line-height: 1.35;
+  color: #ebdcb8;
+  margin: 0;
+  text-shadow: 0 0.2cqh 0.8cqh rgba(0, 0, 0, 0.9);
+}
+
+.texto-estafador-lbl {
+  color: #f2b33d;
+  font-family: 'Michroma', sans-serif;
+  font-size: 2.4cqh;
+  letter-spacing: 0.05em;
+  margin-right: 1cqw;
+}
+
+.volver-wrap-llamada-activa {
+  position: absolute;
+  right: 3.5cqw;
+  bottom: 3.5cqh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5cqh;
+  z-index: 10;
+}
